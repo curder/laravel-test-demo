@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +15,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    return new \App\Mail\SupportTicket('1','2');
+
     return view('welcome');
 });
 
-Auth::routes();
+Route::post('/contact', [\App\Http\Controllers\SupportController::class, 'store']);
 
+Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
