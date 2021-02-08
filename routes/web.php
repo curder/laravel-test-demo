@@ -15,9 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return new \App\Mail\SupportTicket('1','2');
-
     return view('welcome');
+});
+Route::get('/feedback', function() {
+    return 'You\'ve been clicked, punk.';
 });
 
 Route::post('/contact', [\App\Http\Controllers\SupportController::class, 'store']);
