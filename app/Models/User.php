@@ -7,6 +7,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+/**
+ * @property integer|null team_id
+ * @property string name
+ * @property string email
+ * @property string password
+ */
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
@@ -17,6 +23,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
+        'team_id',
         'name',
         'email',
         'password',
@@ -40,4 +47,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function leaveTeam() : User
+    {
+        $this->team_id = null;
+        $this->save();
+
+        return $this;
+    }
 }
