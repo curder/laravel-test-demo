@@ -58,6 +58,19 @@ class TeamTest extends TestCase
     }
 
     /** @test */
+    public function it_when_adding_many_members_at_once_you_still_may_not_exceed_the_team_maximum_size(): void
+    {
+        $team = Team::factory()->create(['size' => 2]);
+
+        $users = User::factory(3)->create();
+
+        $this->expectException(Exception::class);
+        $team->add($users);
+
+        self::assertEquals(2, $team->count());
+    }
+
+    /** @test */
     public function it_can_add_multiple_members_at_once(): void
     {
         $team = Team::factory()->create();

@@ -20,19 +20,19 @@ class Team extends Model
         'name', 'size'
     ];
     /**
-     * @param  User|Collection  $member
+     * @param  User|Collection  $users
      *
      * @return false|Model|iterable
      *
      * @throws Exception
      */
-    public function add($member)
+    public function add($users)
     {
-        $this->guardAgainstTooManyMembers();
+        $this->guardAgainstTooManyMembers($users);
 
-        $method = $member instanceof User ? 'save': 'saveMany';
+        $method = $users instanceof User ? 'save': 'saveMany';
 
-        return $this->members()->$method($member);
+        return $this->members()->$method($users);
     }
     /**
      * @param  null  $users
@@ -79,11 +79,16 @@ class Team extends Model
         return $this->hasMany(User::class);
     }
     /**
-     * @throws Exception
+     * @param User|Collection $users
+     *
+     * @throws \Exception
      */
-    protected function guardAgainstTooManyMembers() : void
+    protected function guardAgainstTooManyMembers($users) : void
     {
-        if ($this->count() >= $this->size) {
+        $numUserToAdd = ($users instanceof User) ? 1: count($users);
+        $newTeamCount = $this->count() + $numUserToAdd;
+
+        if ($newTeamCount > $this->size) {
             throw new Exception;
         }
     }
