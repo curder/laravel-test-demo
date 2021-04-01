@@ -17,8 +17,14 @@ class SupportTicket extends Mailable implements ShouldQueue
     use Queueable;
     use SerializesModels;
 
-    public string $sender;
-    public string $question;
+    /**
+     * @param  string
+     */
+    public $sender;
+    /**
+     * @param  string
+     */
+    public $question;
 
     /**
      * Create a new message instance.
