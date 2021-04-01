@@ -18,5 +18,4 @@ class ExampleTest extends BrowserTestCase
              ->see('You\'ve been clicked, punk.')
              ->seePageIs('feedback');
     }
-
 }

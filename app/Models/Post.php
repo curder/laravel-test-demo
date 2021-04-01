@@ -3,13 +3,13 @@
 namespace App\Models;
 
 use App\Concerns\Likeability;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Post
  *
- * @property integer id
+ * @property int id
  *
  * @package App\Models
  */

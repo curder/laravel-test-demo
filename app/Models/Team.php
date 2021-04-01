@@ -3,13 +3,13 @@
 namespace App\Models;
 
 use Exception;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
- * @property integer size
+ * @property int size
  * @property Collection members
  */
 class Team extends Model
@@ -17,8 +17,9 @@ class Team extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'size'
+        'name', 'size',
     ];
+
     /**
      * @param  User|Collection  $users
      *
@@ -34,6 +35,7 @@ class Team extends Model
 
         return $this->members()->$method($users);
     }
+
     /**
      * @param  null  $users
      *
@@ -55,7 +57,9 @@ class Team extends Model
      */
     public function removeMany($users)
     {
-        return $users->each(fn($user) => $user->leaveTeam());
+        return $users->each(function ($user) {
+            return $user->leaveTeam();
+        });
     }
 
     /**
@@ -64,13 +68,16 @@ class Team extends Model
      */
     public function restart() : Collection
     {
-        return $this->members->each(fn($member) => $member->leaveTeam());
+        return $this->members->each(function ($member) {
+            return $member->leaveTeam();
+        });
     }
 
     public function count() : int
     {
         return $this->members()->count();
     }
+
     /**
      * @return HasMany
      */
@@ -78,6 +85,7 @@ class Team extends Model
     {
         return $this->hasMany(User::class);
     }
+
     /**
      * @param User|Collection $users
      *

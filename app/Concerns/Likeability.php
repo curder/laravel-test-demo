@@ -2,9 +2,9 @@
 namespace App\Concerns;
 
 use App\Models\Like;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Trait Likeability

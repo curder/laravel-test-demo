@@ -9,5 +9,4 @@ abstract class BrowserTestCase extends BaseTestCase
     use CreatesApplication;
 
     public $baseUrl = 'http://localhost';
-
 }
