@@ -5,7 +5,7 @@ on:
   push:
     branches:
       - master
-      - developer
+      - develop
   pull_request:
     branches:
       - master
