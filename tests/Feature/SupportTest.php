@@ -14,7 +14,6 @@ use Tests\TestCase;
  */
 class SupportTest extends TestCase
 {
-
     /** @test */
     public function it_sends_a_support_email(): void
     {
