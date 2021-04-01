@@ -57,7 +57,9 @@ class Team extends Model
      */
     public function removeMany($users)
     {
-        return $users->each(function($user) { return $user->leaveTeam(); });
+        return $users->each(function ($user) {
+            return $user->leaveTeam();
+        });
     }
 
     /**
@@ -66,7 +68,9 @@ class Team extends Model
      */
     public function restart() : Collection
     {
-        return $this->members->each(function($member) { return $member->leaveTeam(); });
+        return $this->members->each(function ($member) {
+            return $member->leaveTeam();
+        });
     }
 
     public function count() : int
