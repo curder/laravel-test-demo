@@ -14,11 +14,11 @@ class NewsServiceTest extends TestCase
     /** @test */
     public function it_can_fetch_top_headlines_news(): void
     {
-        Http::fake([
-           config('services.news.base_url'). '/*' => Http::response(
-               json_decode(file_get_contents(__DIR__.'/stubs/headlines.json'), true)
-           ),
-        ]);
+        Http::fake(function ($request) {
+            return Http::response(
+                json_decode(file_get_contents(__DIR__.'/stubs/headlines.json'), true)
+            );
+        });
 
         $response = NewsService::make()->headlines();
 
@@ -36,9 +36,9 @@ class NewsServiceTest extends TestCase
     /** @test */
     public function throw_exception_when_request_failed(): void
     {
-        Http::fake([
-            config('services.news.base_url'). '/*' => Http::response([], Response::HTTP_UNAUTHORIZED),
-        ]);
+        Http::fake(function ($request) {
+            return Http::response([], Response::HTTP_UNAUTHORIZED);
+        });
 
         $this->expectException(NewsRequestException::class);
 
