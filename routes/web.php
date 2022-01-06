@@ -21,6 +21,10 @@ Route::get('/feedback', function() {
     return 'You\'ve been clicked, punk.';
 });
 
+Route::get('top-headlines', function() {
+    return \App\Services\NewsService::make()->headlines();
+});
+
 Route::post('/contact', [\App\Http\Controllers\SupportController::class, 'store']);
 
 Auth::routes();

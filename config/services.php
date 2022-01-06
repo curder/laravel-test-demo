@@ -30,4 +30,8 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'news' => [
+        'base_url' => env('NEWS_BASE_URI', 'newsapi.org'),
+        'api_token' => env('NEWS_API_TOKEN'),
+    ],
 ];
