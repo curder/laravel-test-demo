@@ -2,12 +2,12 @@
 
 namespace Tests\Feature\Services;
 
-use Illuminate\Http\Client\Request;
-use Tests\TestCase;
-use App\Services\NewsService;
-use Illuminate\Support\Facades\Http;
 use App\Exceptions\NewsRequestException;
+use App\Services\NewsService;
+use Illuminate\Http\Client\Request;
+use Illuminate\Support\Facades\Http;
 use Symfony\Component\HttpFoundation\Response;
+use Tests\TestCase;
 
 class NewsServiceTest extends TestCase
 {

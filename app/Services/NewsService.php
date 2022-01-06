@@ -1,9 +1,10 @@
 <?php
+
 namespace App\Services;
 
-use Throwable;
-use Illuminate\Support\Facades\Http;
 use App\Exceptions\NewsRequestException;
+use Illuminate\Support\Facades\Http;
+use Throwable;
 
 /**
  * Class NewsService
