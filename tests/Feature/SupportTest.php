@@ -54,7 +54,7 @@ class SupportTest extends TestCase
      *
      * @return \Illuminate\Testing\TestResponse
      */
-    protected function contact($attributes = []) : TestResponse
+    protected function contact($attributes = []): TestResponse
     {
         $this->withExceptionHandling();
 
@@ -66,7 +66,7 @@ class SupportTest extends TestCase
      *
      * @return string[]
      */
-    protected function validFields(array $override = []) : array
+    protected function validFields(array $override = []): array
     {
         return array_merge([
             'name' => 'john doe',

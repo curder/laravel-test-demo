@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Mail\SupportTicket;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
 class SupportController extends Controller

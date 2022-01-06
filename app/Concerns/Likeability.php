@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Concerns;
 
 use App\Models\Like;
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Auth;
  */
 trait Likeability
 {
-    public function likes() : MorphMany
+    public function likes(): MorphMany
     {
         return $this->morphMany(Like::class, 'likeable');
     }
@@ -45,7 +46,7 @@ trait Likeability
      */
     public function toggle()
     {
-        return $this->isLiked() ? $this->unlike(): $this->like();
+        return $this->isLiked() ? $this->unlike() : $this->like();
     }
 
     /**
@@ -60,7 +61,7 @@ trait Likeability
     /**
      * @return bool
      */
-    public function isLiked() : bool
+    public function isLiked(): bool
     {
         return $this->likes()->where('user_id', Auth::id())->count();
     }

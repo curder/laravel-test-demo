@@ -1,4 +1,5 @@
 <?php
+
 namespace Tests\Feature\Browsers;
 
 use Tests\BrowserTestCase;

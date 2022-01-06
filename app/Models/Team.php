@@ -31,7 +31,7 @@ class Team extends Model
     {
         $this->guardAgainstTooManyMembers($users);
 
-        $method = $users instanceof User ? 'save': 'saveMany';
+        $method = $users instanceof User ? 'save' : 'saveMany';
 
         return $this->members()->$method($users);
     }
@@ -66,14 +66,14 @@ class Team extends Model
      *
      * @return Collection
      */
-    public function restart() : Collection
+    public function restart(): Collection
     {
         return $this->members->each(function ($member) {
             return $member->leaveTeam();
         });
     }
 
-    public function count() : int
+    public function count(): int
     {
         return $this->members()->count();
     }
@@ -81,7 +81,7 @@ class Team extends Model
     /**
      * @return HasMany
      */
-    public function members() : HasMany
+    public function members(): HasMany
     {
         return $this->hasMany(User::class);
     }
@@ -91,13 +91,13 @@ class Team extends Model
      *
      * @throws \Exception
      */
-    protected function guardAgainstTooManyMembers($users) : void
+    protected function guardAgainstTooManyMembers($users): void
     {
-        $numUserToAdd = ($users instanceof User) ? 1: count($users);
+        $numUserToAdd = ($users instanceof User) ? 1 : count($users);
         $newTeamCount = $this->count() + $numUserToAdd;
 
         if ($newTeamCount > $this->size) {
-            throw new Exception;
+            throw new Exception();
         }
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace Tests\Unit\Integration\Models;
 
 use App\Models\Article;
@@ -15,7 +16,7 @@ class ArticleTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function it_fetches_trending_articles() : void
+    public function it_fetches_trending_articles(): void
     {
         // Given
         Article::factory(2)->create();
